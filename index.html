@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-kalkulator</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+    <div id="fakultet" class="calc-function">
+        <form>
+            <input name="tall" placeholder="Tall" type="number">
+            <button>Fakultet</button>
+        </form>
+        <p>
+            Resultatet er: <span class="resultat"></span>
+        </p>
+    </div>
+    <div id="fizzbuzz" class="calc-function">
+        <form>
+            <input name="tall" placeholder="Tall" type="number">
+            <button>FizzBuzz</button>
+        </form>
+        <p>
+            Resultatet er: <span class="resultat"></span>
+        </p>
+    </div>
+    <div id="fibonacci" class="calc-function">
+        <form>
+            <input name="tall" placeholder="Tall" type="number">
+            <button>Fibonacci</button>
+        </form>
+        <p>
+            Resultatet er: <span class="resultat"></span>
+        </p>
+</body>
+<script type="module">
+
+    import { fakultet } from './fakultet.js'
+    import { fizzbuzz } from './fizzbuzz.js'
+    import { fibonacci } from './fibonacci.js'
+
+    function regnUt(evt) {
+        evt.preventDefault()
+        const input = document.querySelector('#fakultet input')
+        const output = document.querySelector('#fakultet .resultat')
+        const tall = parseInt(input.value)
+        output.textContent = fakultet(tall)
+    }
+
+    function regnUtFizzBuzz(evt) {
+        evt.preventDefault()
+        const input = document.querySelector('#fizzbuzz input')
+        const output = document.querySelector('#fizzbuzz .resultat')
+        const tall = parseInt(input.value)
+        output.textContent = fizzbuzz(tall)
+    }
+
+    function regnUtFibonacci(evt) {
+        evt.preventDefault()
+        const input = document.querySelector('#fibonacci input')
+        const output = document.querySelector('#fibonacci .resultat')
+        const tall = parseInt(input.value)
+        output.textContent = fibonacci(tall)
+    }
+
+document.querySelector('#fakultet button')
+    .addEventListener('click', e => regnUt(e))
+
+document.querySelector('#fizzbuzz button')
+    .addEventListener('click', e => regnUtFizzBuzz(e))
+
+document.querySelector('#fibonacci button')
+    .addEventListener('click', e => regnUtFibonacci(e))
+</script>
+    
+</html>
